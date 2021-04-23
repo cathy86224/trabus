@@ -1,0 +1,62 @@
+$dark-blue: #252945;
+$button-blue: #29385e;
+
+.main {
+    .selections {
+        position: absolute;
+        display: flex;
+        top: 50px;
+        left: 50px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+        .selection {
+            width: 280px;
+            height: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $button-blue;
+            border: 2px solid $dark-blue;
+            border-radius: 5px;
+            padding: 0 15px;
+            transition: ease all 0.2s;
+            &.states {
+                margin-right: 20px;
+            }
+            
+            &:hover {
+                font-weight: bold;
+            }
+        }
+        .item {
+            visibility: hidden;
+            transition: ease all 0.2s;
+            opacity: 0.6;
+            padding: 15px;
+            width: 280px;
+            &.clicked {
+                background-color: $button-blue;
+                padding: 15px;
+                border: 2px solid white;
+                border-radius: 5px;
+                color: white;
+                visibility: visible;
+            }
+            &:hover {
+                font-weight: bold;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.loading {
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
