@@ -24,6 +24,7 @@ $button-blue: #29385e;
             transition: ease all 0.2s;
             &.states {
                 margin-right: 20px;
+                width: 200px;
             }
             
             &:hover {
@@ -36,6 +37,9 @@ $button-blue: #29385e;
             opacity: 0.6;
             padding: 15px;
             width: 280px;
+            &.state {
+                width: 200px;
+            }
             &.clicked {
                 background-color: $button-blue;
                 padding: 15px;

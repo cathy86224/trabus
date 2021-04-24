@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Selection from "./Selection"
+import Chart from "./Chart"
 import loadingGif from "../images/loading.gif"
 import "./Main.scss"
 
@@ -12,7 +13,9 @@ export default class Main extends Component {
                 ca: [],
                 az: [],
                 nm: []
-            }
+            },
+            stateSelected: "",
+            reservoirSelected: ""
         }
     }
 
@@ -40,6 +43,14 @@ export default class Main extends Component {
         })
     }
 
+    getStateSelected = (state) => {
+        this.setState({stateSelected: state})
+    }
+
+    getReservoirSelected = (code) => {
+        this.setState({reservoirSelected: code})
+    }
+
     render() {
         if(this.state.data.ca.length === 0 || this.state.data.az.length === 0 || this.state.data.nm.length === 0) {
             return (
@@ -51,7 +62,8 @@ export default class Main extends Component {
         else {
             return (
                 <div className="main">
-                    <Selection data={this.state.data}/>
+                    <Selection data={this.state.data} getStateSelected={this.getStateSelected} getReservoirSelected={this.getReservoirSelected}/>
+                    <Chart data={this.state.data} state={this.state.stateSelected} resName={this.state.reservoirSelected}/>
                 </div>
             )
         }
