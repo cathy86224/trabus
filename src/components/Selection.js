@@ -74,7 +74,7 @@ export default class Selection extends Component {
     }
 
     reserviorsFilter(state) {
-        let data = this.props.data[state]
+        let data = this.props.data20[state]
         let reservoirList = {}
         for(let site of data) {
             let code = site.sourceInfo.siteCode[0].value

@@ -1,7 +1,11 @@
 $dark-blue: #252945;
 $button-blue: #29385e;
+$button-blue-light: #4e5c80;
+$table-border: #ddd;
+$table-row: #f2f2f2;
 
 .main {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     .selections {
         position: absolute;
         display: flex;
@@ -33,24 +37,75 @@ $button-blue: #29385e;
         }
         .item {
             visibility: hidden;
+            display: none;
             transition: ease all 0.2s;
-            opacity: 0.6;
             padding: 15px;
             width: 280px;
             &.state {
                 width: 200px;
             }
             &.clicked {
-                background-color: $button-blue;
+                background-color: $button-blue-light;
                 padding: 15px;
                 border: 2px solid white;
                 border-radius: 5px;
                 color: white;
                 visibility: visible;
+                display: inherit;
             }
             &:hover {
+                background-color: $button-blue;
                 font-weight: bold;
-                opacity: 1;
+            }
+        }
+    }
+
+    .chart {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+        margin-top: 150px;
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .bar-chart {
+            .table {
+                .table-title {
+                    font-size: 25px;
+                }
+                .table-note {
+                    font-size: 14px;
+                    margin-top: 10px;
+                }
+                table {
+                    margin: auto;
+                    width: 80%;
+                    text-align: center;
+                    border-collapse: collapse;
+                    tr {
+                        &:nth-child(even) {
+                            background-color: $table-row;
+                        }
+                        &:nth-child(odd) {
+                            background-color: white;
+                        }
+                        &:hover {
+                            background-color: $table-border;
+                        }
+                    }
+                    th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        background-color: #4CAF50;
+                        color: white;
+                        border: 1px solid $table-border;
+                    }
+                    td {
+                        border: 1px solid $table-border;
+                        padding: 8px;
+                    }
+                }
             }
         }
     }

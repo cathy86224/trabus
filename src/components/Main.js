@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {urls} from "./Data"
 import Selection from "./Selection"
 import Chart from "./Chart"
 import loadingGif from "../images/loading.gif"
@@ -9,7 +10,7 @@ export default class Main extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: {
+            data20: {
                 ca: [],
                 az: [],
                 nm: []
@@ -21,11 +22,6 @@ export default class Main extends Component {
 
     componentDidMount() {
         // fetch data in the order of CA, AZ, and NM
-        let urls = [
-            "https://waterservices.usgs.gov/nwis/dv/?format=json&stateCd=ca&startDT=2020-01-01&endDT=2020-12-31&parameterCd=00054&siteStatus=active",
-            "https://waterservices.usgs.gov/nwis/dv/?format=json&stateCd=az&startDT=2020-01-01&endDT=2020-12-31&parameterCd=00054&siteStatus=active",
-            "https://waterservices.usgs.gov/nwis/dv/?format=json&stateCd=nm&startDT=2020-01-01&endDT=2020-12-31&parameterCd=00054&siteStatus=active",
-        ]
         Promise.all(
             urls.map(url =>
                 fetch(url)
@@ -34,10 +30,20 @@ export default class Main extends Component {
             )
         ).then(data => {
             this.setState({
-                data: {
+                data20: {
                     ca: data[0],
                     az: data[1],
                     nm: data[2]
+                },
+                data19: {
+                    ca: data[3],
+                    az: data[4],
+                    nm: data[5]
+                },
+                data18: {
+                    ca: data[6],
+                    az: data[7],
+                    nm: data[8]
                 }
             })
         })
@@ -52,7 +58,8 @@ export default class Main extends Component {
     }
 
     render() {
-        if(this.state.data.ca.length === 0 || this.state.data.az.length === 0 || this.state.data.nm.length === 0) {
+        let data20 = this.state.data20
+        if(data20.ca.length === 0 || data20.az.length === 0 || data20.nm.length === 0) {
             return (
                 <div className="loading">
                     <img src={loadingGif} alt="Loading GIF"/>
@@ -62,8 +69,9 @@ export default class Main extends Component {
         else {
             return (
                 <div className="main">
-                    <Selection data={this.state.data} getStateSelected={this.getStateSelected} getReservoirSelected={this.getReservoirSelected}/>
-                    <Chart data={this.state.data} state={this.state.stateSelected} resName={this.state.reservoirSelected}/>
+                    <Selection data20={data20} getStateSelected={this.getStateSelected} getReservoirSelected={this.getReservoirSelected}/>
+                    <Chart states={this.state} />
+                    
                 </div>
             )
         }
