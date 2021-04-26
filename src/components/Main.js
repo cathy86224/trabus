@@ -4,6 +4,7 @@ import Selection from "./Selection"
 import Chart from "./Chart"
 import Footer from "./Footer"
 import Map from "./map/MapDisplay"
+import MediaQuery from "react-responsive"
 import loadingGif from "../images/loading.gif"
 import "./Main.scss"
 
@@ -76,12 +77,14 @@ export default class Main extends Component {
         else {
             return (
                 <div className="main">
-                    <Map 
-                        data={data20} 
-                        getStateSelected={this.getStateSelected} 
-                        getReservoirSelected={this.getReservoirSelected} 
-                        resName={this.state.reservoirSelected}
-                        getReservoirSelectedName={this.getReservoirSelectedName}/>
+                    <MediaQuery minWidth={500}>
+                        <Map 
+                            data={data20} 
+                            getStateSelected={this.getStateSelected} 
+                            getReservoirSelected={this.getReservoirSelected} 
+                            resName={this.state.reservoirSelected}
+                            getReservoirSelectedName={this.getReservoirSelectedName}/>
+                    </MediaQuery>
                     <Chart states={this.state} />
                     <Selection 
                         data20={data20} 
