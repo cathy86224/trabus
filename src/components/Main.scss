@@ -3,101 +3,140 @@ $button-blue: #29385e;
 $button-blue-light: #4e5c80;
 $table-border: #ddd;
 $table-row: #f2f2f2;
+$chart-blue: #577b94;
 
 .main {
+    width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     .selections {
         position: absolute;
+        top: 0;
+        background-color: $dark-blue;
+        width: 100%;
         display: flex;
-        top: 50px;
-        left: 50px;
         text-align: center;
-        border-radius: 5px;
         color: white;
         font-size: 18px;
+        height: 85px;
+        .logo {
+            height: 55px;
+            margin: 15px 0 0 50px;
+        }
         .selection {
-            width: 280px;
+            position: absolute;
+            top: 13px;
+            right: 2%;
+            width: 20%;
             height: 55px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             background-color: $button-blue;
-            border: 2px solid $dark-blue;
+            border: 2px solid white;
             border-radius: 5px;
             padding: 0 15px;
             transition: ease all 0.2s;
             &.states {
-                margin-right: 20px;
-                width: 200px;
+                width: 12%;
+                right: 28%;
             }
-            
+            &.disable {
+                opacity: 0.5;
+                &:hover {
+                    cursor: default;
+                    font-weight: normal;
+                }
+            }
             &:hover {
                 font-weight: bold;
+                cursor: pointer;
             }
         }
-        .item {
-            visibility: hidden;
-            display: none;
-            transition: ease all 0.2s;
-            padding: 15px;
-            width: 280px;
-            &.state {
-                width: 200px;
+        .items {
+            position: absolute;
+            top: 71px;
+            right: 28%;
+            width: 14.4%;
+            &.reservoir {
+                right: 2%;
+                height: 300px;
+                overflow: auto;
+                width: 22.3%;
             }
-            &.clicked {
-                background-color: $button-blue-light;
+            .item {
+                visibility: hidden;
+                display: none;
+                transition: ease all 0.2s;
                 padding: 15px;
-                border: 2px solid white;
-                border-radius: 5px;
-                color: white;
-                visibility: visible;
-                display: inherit;
-            }
-            &:hover {
-                background-color: $button-blue;
-                font-weight: bold;
+                &.clicked {
+                    background-color: $button-blue-light;
+                    padding: 15px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    color: white;
+                    visibility: visible;
+                    display: inherit;
+                }
+                &:hover {
+                    background-color: $button-blue;
+                    font-weight: bold;
+                }
             }
         }
     }
+    .warning {
+        position: absolute;
+        right: 110px;
+        top: 95px;
+        font-size: 15px;
+        color: rgb(62, 62, 62);
+    }
 
     .chart {
-        width: 70%;
+        position: absolute;
+        width: 46%;
         margin: auto;
         text-align: center;
-        margin-top: 150px;
+        right: 1.5%;
+        top: 100px;
         .title {
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
         }
         .bar-chart {
+            font-size: 14px;
             .table {
+                margin-top: 20px;
                 .table-title {
-                    font-size: 25px;
+                    font-size: 20px;
+                    margin-bottom: 5px;
                 }
                 .table-note {
                     font-size: 14px;
                     margin-top: 10px;
+                    color: rgb(74, 74, 74);
                 }
                 table {
                     margin: auto;
-                    width: 80%;
+                    width: 98%;
                     text-align: center;
                     border-collapse: collapse;
                     tr {
                         &:nth-child(even) {
-                            background-color: $table-row;
+                            background-color: #c5dceb;
                         }
                         &:nth-child(odd) {
                             background-color: white;
                         }
                         &:hover {
-                            background-color: $table-border;
+                            background-color: $chart-blue;
+                            color: white;
                         }
                     }
                     th {
                         padding-top: 12px;
                         padding-bottom: 12px;
-                        background-color: #4CAF50;
+                        background-color: $chart-blue;
                         color: white;
                         border: 1px solid $table-border;
                     }
@@ -108,6 +147,52 @@ $table-row: #f2f2f2;
                 }
             }
         }
+    }
+    .footer {
+        width: 100%;
+        background-color: $dark-blue;
+        display: flex;
+        justify-content: space-around;
+        height: 270px;
+        color: white;
+        padding-top: 60px;
+        .logo-wrap {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            letter-spacing: 1px;
+            img {
+                height: 120px;
+                margin-bottom: 15px;
+            }
+        }
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            .header {
+                letter-spacing: 5px;
+                margin-bottom: 20px;
+                font-size: 20px;
+            }
+            .item {
+                color: rgb(210, 210, 210);
+                margin-top: 20px;
+                text-decoration: none;
+                &:hover {
+                    cursor: pointer;
+                    color: rgb(215, 163, 33)
+                }
+            }
+        }
+    }
+    .copyright {
+        color: rgb(103, 103, 103);
+        font-size: 14px;
+        padding-bottom: 50px;
+        text-align: center;
+        background-color: $dark-blue;
     }
 }
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {urls} from "./Data"
 import Selection from "./Selection"
 import Chart from "./Chart"
+import Footer from "./Footer"
+import Map from "./map/MapDisplay"
 import loadingGif from "../images/loading.gif"
 import "./Main.scss"
 
@@ -16,7 +18,8 @@ export default class Main extends Component {
                 nm: []
             },
             stateSelected: "",
-            reservoirSelected: ""
+            reservoirSelected: "",
+            reservoirSelectedName: "",
         }
     }
 
@@ -57,6 +60,10 @@ export default class Main extends Component {
         this.setState({reservoirSelected: code})
     }
 
+    getReservoirSelectedName = (name) => {
+        this.setState({reservoirSelectedName: name})
+    }
+
     render() {
         let data20 = this.state.data20
         if(data20.ca.length === 0 || data20.az.length === 0 || data20.nm.length === 0) {
@@ -69,9 +76,22 @@ export default class Main extends Component {
         else {
             return (
                 <div className="main">
-                    <Selection data20={data20} getStateSelected={this.getStateSelected} getReservoirSelected={this.getReservoirSelected}/>
+                    <Map 
+                        data={data20} 
+                        getStateSelected={this.getStateSelected} 
+                        getReservoirSelected={this.getReservoirSelected} 
+                        resName={this.state.reservoirSelected}
+                        getReservoirSelectedName={this.getReservoirSelectedName}/>
                     <Chart states={this.state} />
-                    
+                    <Selection 
+                        data20={data20} 
+                        getStateSelected={this.getStateSelected} 
+                        getReservoirSelected={this.getReservoirSelected} 
+                        mapSelectedRes={this.state.reservoirSelected} 
+                        mapSelectedState={this.state.stateSelected}
+                        reservoirSelectedName={this.state.reservoirSelectedName}
+                        getReservoirSelectedName={this.getReservoirSelectedName}/>
+                    <Footer />
                 </div>
             )
         }

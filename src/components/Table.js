@@ -48,7 +48,7 @@ export default class Table extends Component {
 
             if(monthCount !== 0) {
                 val /= monthCount
-                avgArr[month] = Math.round(val)
+                avgArr[month] = Math.round(val).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
         }
 

@@ -61,7 +61,8 @@ export default class Chart extends Component {
             datasets: [
                 {
                     label: "acre-feet",
-                    data: this.state.value
+                    data: this.state.value,
+                    backgroundColor: "#577b94",
                 }
             ]
         }
@@ -75,6 +76,7 @@ export default class Chart extends Component {
                 {this.state.display && 
                     <div className="chart">
                         <div className="title">
+                            {this.props.states.reservoirSelectedName}{" "}
                             2020 Daily Acre-Feet Values
                         </div>
                         <div className="bar-chart">

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Logo from "../images/logo.svg"
 
 const STATES = {
     ca: "California",
@@ -15,16 +16,32 @@ export default class Selection extends Component {
             stateSelected: "",
             reservoirClicked: false,
             reservoirSelected: "",
-            reservoirList: {}
+            reservoirList: {},
+            markerSelected: []
         }
     }
 
     componentDidUpdate(prevProp, prevState) {
         if(prevState.stateSelected !== this.state.stateSelected) {
+            let reservoirSelected = ""
             this.setState({
-                reservoirSelected: ""
+                reservoirSelected
             })
         }
+        if(prevProp.reservoirSelectedName !== this.props.reservoirSelectedName) {
+            this.setState({
+                markerSelected: this.props.mapClicked,
+                // stateSelected: "",
+                // reservoirSelected: ""
+            })
+        }
+    }
+
+    getReservoirName(data) {
+        let reservoirSelected = data.filter(site => (site.sourceInfo.siteCode[0].value === this.props.mapSelectedRes) && (site.values[0].value.length !== 0))[0].sourceInfo.siteName
+        reservoirSelected = reservoirSelected.split(",")[0].toLowerCase()
+        reservoirSelected = reservoirSelected.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+        return reservoirSelected
     }
 
     selectionStateClicked = () => {
@@ -71,6 +88,7 @@ export default class Selection extends Component {
             reservoirClicked: false
         })
         this.props.getReservoirSelected(code)
+        this.props.getReservoirSelectedName(name)
     }
 
     reserviorsFilter(state) {
@@ -88,42 +106,53 @@ export default class Selection extends Component {
         this.setState({reservoirList})
     }
 
-
     render() {
         return (
             <div className="selections">
-                <div>
+                <img className="logo" src={Logo} alt="Trabus logo"/>
+                <div className="selection-wrap states">
                     <div className="selection states" onClick={this.selectionStateClicked}>
                         {this.state.stateSelected === "" ?
                             "Select a state" :
                             (STATES[this.state.stateSelected])
                         }
                     </div>
-                    {Object.keys(STATES).map(state => {
-                        return (
-                            <div className={this.stateItemClassName()} key={state} onClick={() => this.stateSelected(state)}>
-                                {STATES[state]}
-                            </div>
-                        )
-                    })}
-                </div>
-                {this.state.stateSelected !== "" && 
-                <div>
-                    <div className="selection reservoirs" onClick={this.selectionReservoirClicked}>
-                        {this.state.reservoirSelected === "" ?
-                            "Select a reservoir" :
-                            this.state.reservoirSelected
-                        }
+                    <div className="items">
+                        {Object.keys(STATES).map(state => {
+                            return (
+                                <div className={this.stateItemClassName()} key={state} onClick={() => this.stateSelected(state)}>
+                                    {STATES[state]}
+                                </div>
+                            )
+                        })}
                     </div>
-                    {Object.keys(this.state.reservoirList).map(code => {
-                        return (
-                            <div className={this.reservoirItemClassName()} key={code} onClick={() => this.reservoirSelected(code)}>
-                                {this.state.reservoirList[code]}
-                            </div>
-                        )
-                    })}
                 </div>
-                }
+                <div className="selection-wrap reservoir">
+                    {this.state.stateSelected !== "" ?
+                    <div>
+                        <div className="selection reservoirs" onClick={this.selectionReservoirClicked}>
+                            {this.state.reservoirSelected === "" ?
+                                "Select a reservoir" :
+                                this.state.reservoirSelected
+                            }
+                        </div>
+                        <div className="items reservoir">
+                            {Object.keys(this.state.reservoirList).map(code => {
+                                return (
+                                    <div className={this.reservoirItemClassName()} key={code} onClick={() => this.reservoirSelected(code)}>
+                                        {this.state.reservoirList[code]}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div> :
+                    <div>
+                        <div className="selection disable">
+                            Select a reservoirs
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
         )
     }
