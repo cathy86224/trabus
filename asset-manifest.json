@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/trabus/static/css/main.72d00fcb.chunk.css",
-    "main.js": "/trabus/static/js/main.958c620f.chunk.js",
-    "main.js.map": "/trabus/static/js/main.958c620f.chunk.js.map",
-    "runtime-main.js": "/trabus/static/js/runtime-main.11acee6d.js",
-    "runtime-main.js.map": "/trabus/static/js/runtime-main.11acee6d.js.map",
-    "static/js/2.1e08ef3c.chunk.js": "/trabus/static/js/2.1e08ef3c.chunk.js",
-    "static/js/2.1e08ef3c.chunk.js.map": "/trabus/static/js/2.1e08ef3c.chunk.js.map",
-    "static/js/3.4a7e7102.chunk.js": "/trabus/static/js/3.4a7e7102.chunk.js",
-    "static/js/3.4a7e7102.chunk.js.map": "/trabus/static/js/3.4a7e7102.chunk.js.map",
+    "main.css": "/trabus/static/css/main.e2a192e5.chunk.css",
+    "main.js": "/trabus/static/js/main.47c29d54.chunk.js",
+    "main.js.map": "/trabus/static/js/main.47c29d54.chunk.js.map",
+    "runtime-main.js": "/trabus/static/js/runtime-main.38767665.js",
+    "runtime-main.js.map": "/trabus/static/js/runtime-main.38767665.js.map",
+    "static/js/2.2426c17e.chunk.js": "/trabus/static/js/2.2426c17e.chunk.js",
+    "static/js/2.2426c17e.chunk.js.map": "/trabus/static/js/2.2426c17e.chunk.js.map",
+    "static/js/3.2ff26c60.chunk.js": "/trabus/static/js/3.2ff26c60.chunk.js",
+    "static/js/3.2ff26c60.chunk.js.map": "/trabus/static/js/3.2ff26c60.chunk.js.map",
     "index.html": "/trabus/index.html",
-    "static/css/main.72d00fcb.chunk.css.map": "/trabus/static/css/main.72d00fcb.chunk.css.map",
-    "static/js/2.1e08ef3c.chunk.js.LICENSE.txt": "/trabus/static/js/2.1e08ef3c.chunk.js.LICENSE.txt",
+    "static/css/main.e2a192e5.chunk.css.map": "/trabus/static/css/main.e2a192e5.chunk.css.map",
+    "static/js/2.2426c17e.chunk.js.LICENSE.txt": "/trabus/static/js/2.2426c17e.chunk.js.LICENSE.txt",
     "static/media/loading.2048467f.gif": "/trabus/static/media/loading.2048467f.gif",
     "static/media/logo.848cecd3.svg": "/trabus/static/media/logo.848cecd3.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.11acee6d.js",
-    "static/js/2.1e08ef3c.chunk.js",
-    "static/css/main.72d00fcb.chunk.css",
-    "static/js/main.958c620f.chunk.js"
+    "static/js/runtime-main.38767665.js",
+    "static/js/2.2426c17e.chunk.js",
+    "static/css/main.e2a192e5.chunk.css",
+    "static/js/main.47c29d54.chunk.js"
   ]
 }
